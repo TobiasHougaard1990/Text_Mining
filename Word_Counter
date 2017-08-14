@@ -1,0 +1,24 @@
+""" Word Counting """
+#Get most frequent words of corpus
+def get_most_frequent(corpus):
+    frequent_words = [0,0,0,0]
+    frequent_words[0] = [0]
+    for sermon in corpus:
+        for word in sermon:
+                if sermon.count(word) > frequent_words[0][0]:
+                    frequent_words[3] = frequent_words[2]
+                    frequent_words[2] = frequent_words[1]
+                    frequent_words[1] = frequent_words[0]
+                    frequent_words[0] = sermon.count(word), word
+                elif sermon.count(word) > frequent_words[1][0]:
+                    frequent_words[3] = frequent_words[2]
+                    frequent_words[2] = frequent_words[1]
+                    frequent_words[1] = sermon.count(word), word
+                elif sermon.count(word) > frequent_words[2][0]:
+                    frequent_words[3] = frequent_words[2]
+                    frequent_words[2] = sermon.count(word), word
+                elif sermon.count(word) > frequent_words[3][0]:
+                    frequent_words[3] = sermon.count(word), word
+        return frequent_words
+
+frequent_words = get_most_frequent(tokenized_sermons)
